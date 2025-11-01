@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/add-edit-page.css" />
+    <title>Add New Student</title>
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="content-container">
+        <div class="header">
+          <h1>Add New Student</h1>
+        </div>
+        <div class="content">
+          <% if (error) { %>
+          <div class="error"><%= error %></div>
+          <% } %>
+
+          <form action="/students" method="POST">
+            <div class="name-group">
+              <div class="form-group">
+                <label>First Name</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Enter first name"
+                  value="<%= student.firstName || '' %>"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Enter last name"
+                  value="<%= student.lastName || '' %>"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter email"
+                value="<%= student.email || '' %>"
+                required
+              />
+            </div>
+            
+            <div class="department-enrollment-group">
+              <div class="form-group">
+                <label>Department</label>
+                <select name="department" id="department" required>
+                  <% ['General', 'IS', 'CS', 'IT', 'AI'].forEach(dept => { %>
+                    <option value="<%= dept %>" <%= student.department === dept ?
+                    'selected' : '' %>>
+                      <%= dept %>
+                    </option>
+                  <% }); %>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Enrollment Date</label>
+                <input
+                  type="date"
+                  id="enrollmentDate"
+                  name="enrollmentDate"
+                  value="<%= typeof student.enrollmentDate === 'string' ? 
+                student.enrollmentDate : 
+                (student.enrollmentDate ? student.enrollmentDate.toISOString().split('T')[0] : '') %>"
+                />
+              </div>
+            </div>
+
+            <div class="form-group status-checkbox">
+              <input type="checkbox" name="isActive" <%= student.isActive ===
+              true || student.isActive === 'on' ? 'checked' : '' %> >
+              <label> Active Student </label>
+            </div>
+
+            <div class="address-info-section">
+              <h3>Address</h3>
+              <div class="form-group">
+                <label>City</label>
+                <input
+                  type="text"
+                  id="city"
+                  name="address[city]"
+                  placeholder="Enter city"
+                  value="<%= student.address && student.address.city || '' %>"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Street</label>
+                <input
+                  type="text"
+                  id="street"
+                  name="address[street]"
+                  placeholder="Enter street"
+                  value="<%= student.address && student.address.street || '' %>"
+                />
+              </div>
+            </div>
+
+            <div class="actions-bar">
+              <button type="submit" class="btn">Save Student</button>
+              <a href="/students" class="btn">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

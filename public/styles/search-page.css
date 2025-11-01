@@ -1,0 +1,105 @@
+@import "./base-styles.css";
+
+.content {
+  padding: 2rem;
+}
+
+.search-form {
+  background: white;
+  border-radius: 0.8rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-groups-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  flex: 1;
+  max-width: -webkit-fill-available;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.95em;
+  font-weight: 600;
+  color: rgb(45, 55, 72);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: -webkit-fill-available;
+  padding: 0.8rem 1rem;
+  border: 2px solid rgb(226, 232, 240);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  outline: none;
+  border-color: #2a5298;
+  box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+}
+
+.actions-bar {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.actions-bar .btn {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(245, 245, 245);
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.actions-bar .btn {
+  background-color: rgb(85, 85, 85);
+}
+
+.actions-bar .search-btn {
+  background-color: rgb(76, 175, 80) !important;
+  border: none;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.action-buttons .btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: white;
+}
+
+.action-buttons .btn:nth-child(1) {
+  background-color: rgb(76, 175, 80);
+}
+
+.action-buttons .btn:nth-child(2) {
+  background-color: rgb(33, 150, 243);
+}
+
+.action-buttons .delete-btn {
+  background-color: rgb(244, 67, 54) !important;
+  border: none;
+  cursor: pointer;
+}

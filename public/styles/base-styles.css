@@ -1,0 +1,138 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background-color: rgb(225, 225, 225);
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  transition: opacity 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  opacity: 0.8;
+}
+
+.page-container {
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.content-container {
+  width: 100%;
+  background-color: rgb(245, 245, 245);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  background-color: rgb(30, 65, 130);
+  color: rgb(245, 245, 245);
+  padding: 1rem 2.5rem;
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+@media (max-width: 576px) {
+  .header {
+    padding: 1rem 1.5rem;
+  }
+  .header h1 {
+    text-align: center;
+  }
+}
+
+.table-title {
+  font-size: 1.5em;
+  color: rgb(45, 55, 72);
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+thead {
+  background: linear-gradient(135deg, rgb(246 248 251) 0%, white 100%);
+}
+
+tr {
+  transition: background 0.1s ease;
+}
+
+tr:hover {
+  background: rgb(246, 248, 251);
+}
+
+th {
+  padding: 1.2rem;
+  text-align: center;
+  font-weight: 600;
+  color: rgb(45, 55, 72);
+  border-bottom: 2px solid rgb(226, 232, 240);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td {
+  padding: 1.2rem;
+  border-bottom: 1px solid rgb(226 232 240);
+  color: rgb(74 85 104);
+  text-align: center;
+}
+
+.status {
+  font-size: 0.85em;
+  font-weight: 600;
+  padding: 0.5rem 0.85rem;
+  border-radius: 10rem;
+}
+
+.active {
+  background: rgb(198, 246, 213);
+  color: rgb(34, 84, 61);
+}
+
+.inactive {
+  background: rgb(254, 215, 215);
+  color: rgb(116, 42, 42);
+}
+
+.success {
+  color: green;
+  padding: 10px;
+  background: #e6ffe6;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.error {
+  color: red;
+  padding: 10px;
+  background: #ffebeb;
+  border-radius: 4px;
+  margin: 10px 0;
+}

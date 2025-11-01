@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/add-edit-page.css" />
+    <title>Add New Course</title>
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="content-container">
+        <div class="header">
+          <h1>Add New Course</h1>
+        </div>
+        <div class="content">
+          <% if (error) { %>
+          <div class="error"><%= error %></div>
+          <% } %>
+
+          <form action="/courses" method="POST">
+            <div class="code-title-group">
+              <div class="form-group">
+                <label>Course Code</label>
+                <input
+                  type="text"
+                  id="courseCode"
+                  name="courseCode"
+                  placeholder="e.g., CS101"
+                  value="<%= course.courseCode || '' %>"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Title</label>
+                <input
+                  type="text"
+                  id="title"
+                  name="title"
+                  placeholder="Enter course title"
+                  value="<%= course.title || '' %>"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              <textarea
+                id="description"
+                name="description"
+                rows="3"
+                placeholder="Enter course description"
+                required
+              >
+<%= course.description || '' %></textarea
+              >
+            </div>
+
+            <div class="credits-department-group">
+              <div class="form-group">
+                <label>Credit Hours</label>
+                <input
+                  type="number"
+                  id="creditHours"
+                  name="creditHours"
+                  placeholder="1-6"
+                  min="1"
+                  max="6"
+                  value="<%= course.creditHours || '' %>"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Department</label>
+                <input
+                  type="text"
+                  id="department"
+                  name="department"
+                  placeholder="e.g., IS"
+                  value="<%= course.department || '' %>"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Prerequisites</label>
+              <select 
+                name="prerequisites" 
+                id="prerequisites" 
+                multiple
+              >
+                <% availableCourses.forEach(availableCourse => { 
+                  const isSelected = (course.prerequisites || []).includes(availableCourse.courseCode);
+                %>
+                  <option value="<%= availableCourse.courseCode %>" <%= isSelected ? 'selected' : '' %>>
+                    <%= availableCourse.courseCode %> - <%= availableCourse.title %>
+                  </option>
+                <% }); %>
+              </select>
+              <h5 class="prerequisites-help">Hold Ctrl/Cmd to select multiple</h5>
+            </div>
+
+            <div class="schedule-section">
+              <h3>Schedule Information</h3>
+
+              <div class="form-group">
+                <label>Days</label>
+                <div class="days-field">
+                  <% ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'].forEach(day => {
+                  %>
+                  <div class="day-checkbox">
+                    <input type="checkbox" name="schedule[days][]" value="<%=
+                    day %>" <%= (course.schedule?.days || []).includes(day) ?
+                    'checked' : '' %> >
+                    <label><%= day %></label>
+                  </div>
+                  <% }); %>
+                </div>
+              </div>
+
+              <div class="time-room-group">
+                <div class="form-group">
+                  <label>Time</label>
+                  <input
+                    type="time"
+                    name="schedule[time]"
+                    value="<%= course.schedule?.time || '' %>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Room</label>
+                  <input
+                    type="text"
+                    name="schedule[room]"
+                    placeholder="e.g., Room 101"
+                    value="<%= course.schedule?.room || '' %>"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group status-checkbox">
+                <input type="checkbox" name="isActive" <%= course.isActive ===
+                true || course.isActive === 'on' ? 'checked' : '' %> >
+                <label>Active course</label>
+              </div>
+            </div>
+
+            <div class="actions-bar">
+              <button type="submit" class="btn">Save Course</button>
+              <a href="/courses" class="btn">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+@import "./base-styles.css";
+
+.content {
+  max-width: 40rem;
+  width: -webkit-fill-available;
+  padding: 3rem;
+  margin: 3rem;
+  justify-self: center;
+  background-color: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 576px) {
+  .content {
+    padding: 2rem;
+    margin: 1rem;
+  }
+}
+
+.name-group,
+.department-enrollment-group,
+.code-title-group,
+.credits-department-group,
+.time-room-group,
+.title-credits-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.form-group {
+  flex: 1;
+  margin-bottom: 1rem;
+  max-width: -webkit-fill-available;
+}
+
+.days-field {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background-color: rgb(247, 250, 252);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.status-checkbox,
+.day-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.day-checkbox {
+  flex: 1;
+  margin: 0;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.95em;
+  font-weight: 600;
+  color: rgb(45, 55, 72);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.status-checkbox label,
+.day-checkbox label {
+  margin: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+input[type="time"],
+textarea,
+select {
+  width: -webkit-fill-available;
+  padding: 0.8rem 1rem;
+  border: 2px solid rgb(226, 232, 240);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+input[type="time"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #2a5298;
+  box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+}
+
+.prerequisites-help {
+  color: rgb(113, 128, 150);
+  font-size: 0.85em;
+  font-weight: 400;
+  margin: 0.5rem 0 0 0;
+}
+
+.address-info-section,
+.schedule-section {
+  margin: 2rem 0;
+  padding: 2.4rem 0 0 0;
+  border-top: 2px solid rgb(226, 232, 240);
+}
+
+.address-info-section h3,
+.schedule-section h3 {
+  color: rgb(45, 55, 72);
+  margin-top: 0;
+}
+
+.actions-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.actions-bar .btn {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(245, 245, 245);
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.actions-bar .btn:nth-child(1) {
+  background-color: rgb(76, 175, 80);
+  border: none;
+}
+
+.actions-bar .btn:nth-child(2) {
+  background-color: rgb(85, 85, 85);
+}

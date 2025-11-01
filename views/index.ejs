@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/homepage.css" />
+    <title>Student Management System</title>
+  </head>
+  <body>
+    <% if (typeof success !== 'undefined' && success) { %>
+    <div class="success-message"><%= success %></div>
+    <% } %>
+    <div class="page-container">
+      <div class="content-container">
+        <div class="header">
+          <h1>Welcome to Student Management System</h1>
+        </div>
+        <div class="content">
+          <div class="nav-links-container">
+            <a class="nav-item" href="/students">
+              <div class="nav-icon"></div>
+              <h3>Manage Students</h3>
+              <p>View and manage student records</p>
+            </a>
+            <a class="nav-item" href="/courses">
+              <div class="nav-icon"></div>
+              <h3>Manage Courses</h3>
+              <p>View and manage course records</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

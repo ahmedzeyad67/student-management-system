@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/search-page.css" />
+    <title>Student Search</title>
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="content-container">
+        <div class="header">
+          <h1>Student Search</h1>
+        </div>
+        <div class="content">
+          <form action="/students/search" method="GET" class="search-form">
+            <div class="form-groups-container">
+              <div class="form-group">
+                <label>Name:</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="First or last name"
+                  value="<%= query.name || '' %>"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Department</label>
+                <select name="department" id="department">
+                  <option value="">All Departments</option>
+                  <% ['General', 'IS', 'CS', 'IT', 'AI'].forEach(dept => { %>
+                    <option value="<%= dept %>" <%= query.department === dept ? 'selected' : '' %>>
+                      <%= dept %>
+                    </option>
+                  <% }); %>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Minimum GPA</label>
+                <input
+                  type="number"
+                  name="minGpa"
+                  id="minGpa"
+                  min="0"
+                  max="4"
+                  step="0.1"
+                  placeholder="0.0 to 4.0"
+                  value="<%= query.minGpa || '' %>"
+                />
+              </div>
+
+              <div class="form-group">
+                <label>Status</label>
+                <select name="status" id="status">
+                  <option value="">Any Status</option>
+                  <option value="active" <%= query.status === 'active' ? 'selected' : '' %>>Active</option>
+                  <option value="inactive" <%= query.status === 'inactive' ? 'selected' : '' %>>Inactive</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Minimum Courses</label>
+                <input
+                  type="number"
+                  name="minCourses"
+                  id="minCourses"
+                  min="0"
+                  placeholder="Minimum courses enrolled"
+                  value="<%= query.minCourses || '' %>"
+                />
+              </div>
+            </div>
+
+            <div class="actions-bar">
+              <button type="submit" class="btn search-btn">Search</button>
+              <a href="/students/search" class="btn">Reset</a>
+            </div>
+          </form>
+
+          <h2 class="table-title">
+            Search Results (<%= students.length %> found)
+          </h2>
+          <% if (students && students.length > 0) { %>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Department</th>
+                  <th>GPA</th>
+                  <th>Status</th>
+                  <th>Courses</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% students.forEach(student => { %>
+                <tr>
+                  <td><%= student.studentId %></td>
+                  <td><%= student.firstName %> <%= student.lastName %></td>
+                  <td><%= student.email %></td>
+                  <td><%= student.department %></td>
+                  <td><%= student.GPA.toFixed(2) %></td>
+                  <td>
+                    <span
+                      class="status <%= student.isActive ? 'active' : 'inactive' %>"
+                    >
+                      <%= student.isActive ? 'Active' : 'Inactive' %>
+                    </span>
+                  </td>
+                  <td><%= student.courses ? student.courses.length : 0 %></td>
+                  <td>
+                    <div class="action-buttons">
+                      <a href="/students/<%= student.studentId %>" class="btn"
+                        >View
+                      </a>
+                      <a
+                        href="/students/<%= student.studentId %>/edit"
+                        class="btn"
+                        >Edit
+                      </a>
+                      <form
+                        action="/students/<%= student.studentId %>?_method=DELETE"
+                        method="POST"
+                      >
+                        <button
+                          type="submit"
+                          class="btn delete-btn"
+                          onclick="return confirm('Are you sure?')"
+                        >
+                          Delete
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+          <% } else if (students) { %>
+          <p class="no-results">No students found matching your criteria.</p>
+          <% } %>
+
+          <div class="actions-bar">
+            <a class="btn" href="/students">Back to All Students</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

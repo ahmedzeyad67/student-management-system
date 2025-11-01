@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/edit-grade-page.css" />
+    <title>Edit Grade</title>
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="content-container">
+        <div class="header">
+          <h1>Edit Grade for <%= course._id.title %></h1>
+        </div>
+        <div class="content">
+          <% if (error) { %>
+          <p class="error"><%= error %></p>
+          <% } %>
+
+          <form
+            action="/students/<%= student.studentId %>/courses/<%= course._id._id %>/update-grade"
+            method="POST"
+          >
+            <div class="form-group">
+              <label for="grade">Grade:</label>
+              <input
+                type="number"
+                name="grade"
+                id="grade"
+                min="0"
+                max="100"
+                value="<%= course.grade || '' %>"
+                placeholder="Enter grade"
+                required
+              />
+            </div>
+
+            <div class="actions-bar">
+              <button type="submit" class="btn">Save Grade</button>
+              <a href="/students/<%= student.studentId %>" class="btn">
+                Cancel
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

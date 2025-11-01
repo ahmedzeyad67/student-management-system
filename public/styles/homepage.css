@@ -1,0 +1,78 @@
+@import "./base-styles.css";
+
+.content-container {
+  width: max-content !important;
+}
+
+.header h1 {
+  text-align: center !important;
+}
+
+.content {
+  padding: 3rem;
+}
+
+.nav-links-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.nav-item {
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  position: relative;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 2px solid transparent;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: rgb(30, 65, 130);
+  border-radius: 1rem 1rem 0 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover {
+  transform: translateY(-5px);
+  border: 2px solid rgb(30, 65, 130);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.nav-item:hover::before {
+  transform: scaleX(1);
+}
+
+.nav-icon {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 10rem;
+  background-color: rgb(30, 65, 130);
+}
+
+.nav-item h3 {
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  color: rgb(45 55 72);
+}
+
+.nav-item p {
+  color: rgb(113 128 150);
+  line-height: 1.5rem;
+  margin-bottom: 0;
+}
