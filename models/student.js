@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Counter = require("./Counter");
+const Counter = require("./counter");
 
 const studentSchema = new mongoose.Schema({
   studentId: { type: Number, unique: true },
