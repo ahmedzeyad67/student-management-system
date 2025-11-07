@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Student = require("../models/Student");
-const Course = require("../models/Course");
+const Student = require("../models/student");
+const Course = require("../models/course");
 const mongoose = require("mongoose");
 
 // Function to process form data
